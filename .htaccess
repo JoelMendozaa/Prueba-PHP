@@ -1,0 +1,32 @@
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    #RewriteRule ^producto/([0-9]+)$             /producto.php?id=$1 [L]
+    RewriteRule ^biblioteca\/$                   /index.php?seccion=biblioteca [L]
+    RewriteRule ^biblioteca/pag/([0-9]+)$        /index.php?seccion=biblioteca&pagina=$1 [L]
+
+    RewriteRule ^biblioteca/actualizar/([0-9]+)$ /index.php?seccion=biblioteca&oper=update&id=$1 [L]
+    RewriteRule ^biblioteca/eliminar/([0-9]+)$   /index.php?seccion=biblioteca&oper=delete&id=$1 [L]
+    RewriteRule ^biblioteca/alta\/               /index.php?seccion=biblioteca&oper=create [L]
+
+    # USUARIOS
+
+    RewriteRule ^usuarios\/$                   /index.php?seccion=usuarios [L]
+    RewriteRule ^usuarios/pag/([0-9]+)$        /index.php?seccion=usuarios&pagina=$1 [L]
+
+    RewriteRule ^usuarios/actualizar/([0-9]+)$ /index.php?seccion=usuarios&oper=update&id=$1 [L]
+    RewriteRule ^usuarios/eliminar/([0-9]+)$   /index.php?seccion=usuarios&oper=delete&id=$1 [L]
+    RewriteRule ^usuarios/alta\/               /index.php?seccion=usuarios&oper=create [L]
+
+    # HORARIO
+    RewriteRule ^horario\/$                      /index.php?seccion=horario [L]
+    RewriteRule ^horario/(.*)\/                  /index.php?seccion=horario&ciclo=$1 [L]
+
+    # Redirigir la URL de tipo /datos/otros/numero a /index.php?seccion=datos&oper=otros&id=numero
+    #RewriteRule ^seccion/([^/]+)/([^/]+)/([^/]+)$ /index.php?seccion=$1&oper=$2&id=$3 [L,QSA]
+
+    # Redirigir la URL de tipo / a /index.php?seccion=inicio
+    RewriteRule ^$ /index.php?seccion= [L,QSA]
+</IfModule>
+
+
